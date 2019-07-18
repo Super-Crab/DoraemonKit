@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import <DoraemonKit/DoraemonKit.h>
 #import "DoraemonDemoHomeViewController.h"
+#import "Doraemoni18NUtil.h"
 //#import <CocoaLumberjack/CocoaLumberjack.h>
 
 @interface AppDelegate ()
@@ -25,9 +26,19 @@
     for (int i=0; i<10; i++) {
         //DDLogInfo(@"点击添加埋点11111");
     }
-    [[DoraemonManager shareInstance] addPluginWithTitle:@"测试插件" icon:@"doraemon_default" desc:@"测试插件" pluginName:@"TestPlugin" atModule:@"业务工具"];
+    [[DoraemonManager shareInstance] addPluginWithTitle:DoraemonLocalizedString(@"测试插件") icon:@"doraemon_default" desc:DoraemonLocalizedString(@"测试插件") pluginName:@"TestPlugin" atModule:DoraemonLocalizedString(@"业务工具")];
+
+    [[DoraemonManager shareInstance] addPluginWithTitle:@"block方式加入插件" icon:@"doraemon_default" desc:@"测试插件" pluginName:@"TestPlugin" atModule:DoraemonLocalizedString(@"业务工具") handle:^(NSDictionary *itemData) {
+        NSLog(@"handle block plugin");
+    }];
+
     [[DoraemonManager shareInstance] addStartPlugin:@"StartPlugin"];
+    [DoraemonManager shareInstance].bigImageDetectionSize = 10 * 1024;//大图检测只检测100K以上的
     [[DoraemonManager shareInstance] install];
+    
+    [[DoraemonManager shareInstance] addANRBlock:^(NSDictionary *anrDic) {
+        NSLog(@"anrDic == %@",anrDic);
+    }];
 
 //    [[DoraemonManager shareInstance] addH5DoorBlock:^(NSString *h5Url) {
 //        NSLog(@"使用自带容器打开H5链接: %@",h5Url);

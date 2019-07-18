@@ -10,7 +10,7 @@
 #import "DoraemonDefine.h"
 #import "DoraemonMethodUseTimeListCell.h"
 
-@interface DoraemonMethodUseTimeListViewController ()
+@interface DoraemonMethodUseTimeListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, copy) NSMutableArray *loadModelArray;
 @property (nonatomic, strong) UITableView *tableView;
@@ -24,6 +24,15 @@
     self.title = @"Load耗时检测记录";
     
     _loadModelArray = [NSMutableArray arrayWithArray:dlaLoadModels];
+    [_loadModelArray sortUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        CGFloat costA = [obj1[@"cost"] floatValue];
+        CGFloat costB = [obj2[@"cost"] floatValue];
+        if (costA < costB) {
+            return NSOrderedDescending;
+        }else{
+            return NSOrderedAscending;
+        }
+    }];
     CGFloat allCost = 0.f;
     if(_loadModelArray && _loadModelArray.count>0){
         for (NSDictionary *dic in _loadModelArray) {

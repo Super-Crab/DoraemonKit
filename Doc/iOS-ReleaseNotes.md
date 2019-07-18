@@ -1,4 +1,46 @@
 # Release Notes
+
+### 1.2.0
+1. 加入Weex专项工具，包括：
+2. **【console日志查看】** 方便在端上查看每一个Weex文件中的console日志，提供分级和搜索功能
+3. **【storage缓存查看】** 将Weex中的storage模块的本地缓存数据可视化展示
+4. **【容器信息】** 查看每一个打开的Weex页面的基本信息和性能数据
+5. **【DevTool】** 快速开启Weex DevTool的扫码入口
+
+### 1.1.9
+1、H5任意门支持扫码和历史浏览记录功能 [feng562925462](https://github.com/feng562925462)
+
+2、支持使用block的方式接入自定义测试模块 [csc-EricWu](https://github.com/csc-EricWu/)
+
+3、卡顿监控支持查看卡顿时长 [k373379320](https://github.com/k373379320)
+
+4、沙盒浏览，除了数据库文件之外，其他文件修改成 QLPreviewController 打开 [HuginChen](https://github.com/HuginChen)
+
+5、支持framework直接接入，方便非pod管理的项目
+
+6、性能曲线图代码重构,支持同时查看fps、内存、cpu和流量的信息。
+
+7、解决toast在某一些情况无法显示的问题,改善用户体验
+
+8、其他一些优化和代码整理，详见代码提交记录
+
+
+### 1.1.8
+1、支持国际化，中英文
+
+2、适配横屏 @ [Hugin](https://github.com/HuginChen)
+
+3、修复强持有 CLLocationManagerDelegate 不释放的问题 @[li6185377](https://github.com/li6185377)
+
+4、iOS沙盒浏览器优化 @[csc-EricWu](https://github.com/csc-EricWu/)
+
+5、支持主动控制隐藏显示DoKit入口
+
+6、app信息页面 权限cell可以直接跳转到权限设置页面进行设置
+
+7、其他一些优化和代码整理，详见代码提交记录
+
+
 ## 1.1.7
 1、支持数据库文件本地预览功能
 
